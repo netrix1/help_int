@@ -13,18 +13,34 @@ require_once 'config.php';
 		<!-- Bootstrap -->
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<!-- Icones -->
+		<link rel="stylesheet" type="text/css" href="plugins/materialdesignicons/css/materialdesignicons.min.css">
 		<link rel="stylesheet" type="text/css" href="plugins/material-icon/css/material-icons.css">
 		<!-- Style Personalizados -->
 		<link rel="stylesheet" href="xakti-bs/xakti-bs.css">
 		<link rel="stylesheet" href="xakti-bs/main.css">
 		<style type="text/css">
-	.logoHelp {
-	height: 50px;
-	margin-top: -10px;
-	}
-.theme-help>.navbar, .theme-pink-orange>.wrap>.sidebar>.sb-header>.sb-bg {
-    background: linear-gradient(to right, #0064fb, #3c418a);
-}
+			.logoHelp {
+				height: 50px;
+				margin-top: -10px;
+			}
+			.theme-help>.navbar, .theme-pink-orange>.wrap>.sidebar>.sb-header>.sb-bg {
+				background: linear-gradient(to right, #0064fb, #3c418a);
+			}
+
+			.sidebar .nav-link>.mdi, .layout-icon .wrap .sidebar .sidebar-nav .nav-item.nav-toggle .nav-dropdown .nav-link .mdi {
+				margin-right: 15px;
+			}
+
+			.nav-link>.mdi {
+				margin-right: 0;
+				font-size: 22px;
+			}
+			.mdi {
+				vertical-align: text-bottom;
+				font-size: 18px;
+				margin-right: 7px;
+				line-height: 1;
+			}
 		</style>
 		<?php //style ?>
 
@@ -57,6 +73,7 @@ require_once 'config.php';
 			</div>
 		</div>
 		<?php //include PASTA_PARTS.'/chat.php';?>
+		<?php include PASTA_PARTS.'/right_float.php';?>
 		</div>
 		<script type="text/javascript" src="plugins/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="plugins/popper.min.js"></script>
