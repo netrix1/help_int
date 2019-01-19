@@ -41,6 +41,10 @@ require_once 'config.php';
 				margin-right: 7px;
 				line-height: 1;
 			}
+			.theme-help .nav-toggle>a:focus, .theme-primary .nav-toggle>a:focus, .theme-help>.wrap>.sidebar .nav-link.active, .theme-primary>.wrap>.sidebar .nav-link.active {
+				border-left: 3px solid var(--blue);
+				color: var(--blue) !important;
+			}
 		</style>
 		<?php //style ?>
 
@@ -68,12 +72,13 @@ require_once 'config.php';
 					<?php // breadcrumb.php ?>
 					<?php include PASTA_PARTS.'/breadcrumb.php'; ?>
 					<?php // Content.php ?>
-					<?php include PASTA_PARTS.'/content.php'; ?>
+					<?php //include PASTA_PARTS.'/content.php'; ?>
+					<?php include PASTA_PARTS.'/home.php'; ?>
 				</section>
 			</div>
 		</div>
 		<?php //include PASTA_PARTS.'/chat.php';?>
-		<?php include PASTA_PARTS.'/right_float.php';?>
+		<?php //include PASTA_PARTS.'/right_float.php';?>
 		</div>
 		<script type="text/javascript" src="plugins/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="plugins/popper.min.js"></script>
@@ -82,6 +87,7 @@ require_once 'config.php';
 		<script type="text/javascript" src="pages/charts/utils.js"></script>
 		<script type="text/javascript" src="xakti-bs/xakti-bs.js"></script>
 		<script type="text/javascript" src="xakti-bs/main.js"></script>
+		<?php echo $scripsjs; ?>
 		<?php //scripts ?>
 	</body>
 </html>
