@@ -123,7 +123,8 @@ body{
   background: linear-gradient(to right, #f095ff, #f64848);
 }
 .sidebar-dark>.wrap>.sidebar{
-  background-color: #1a1c29 !important;
+  /*background-color: #1a1c29 !important;*/
+  background: linear-gradient(0deg, rgb(1, 11, 29) 0%, rgb(23, 59, 118) 100%);
 }
 .sidebar-dark>.wrap>.sidebar>.sb-header>.sb-bg{
   background-color: #040617;
