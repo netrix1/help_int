@@ -1,6 +1,6 @@
 <?php
 
-define('URL_SITE', "http://localhost:8090/prj_intra"); 		// Caminho até a pasta de inicio home (index.php)
+define('URL_SITE', "http://localhost/help_int"); 		// Caminho até a pasta de inicio home (index.php)
 define('PASTA_PARTS', "parts"); 							// Pasta Onde está os recortes do site
 
 //====================== DEFINIÇÕES DA PAGINA
