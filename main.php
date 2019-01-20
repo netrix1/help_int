@@ -16,8 +16,8 @@ require_once 'config.php';
 		<link rel="stylesheet" type="text/css" href="plugins/materialdesignicons/css/materialdesignicons.min.css">
 		<link rel="stylesheet" type="text/css" href="plugins/material-icon/css/material-icons.css">
 		<!-- Style Personalizados -->
-		<link rel="stylesheet" href="xakti-bs/xakti-bs.css">
-		<link rel="stylesheet" href="xakti-bs/main.css">
+		<link rel="stylesheet" href="help/help.css">
+		<link rel="stylesheet" href="help/main.css">
 		<style type="text/css">
 			.logoHelp {
 				height: 50px;
@@ -85,8 +85,8 @@ require_once 'config.php';
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="plugins/chartjs/dist/Chart.min.js"></script>
 		<script type="text/javascript" src="pages/charts/utils.js"></script>
-		<script type="text/javascript" src="xakti-bs/xakti-bs.js"></script>
-		<script type="text/javascript" src="xakti-bs/main.js"></script>
+		<script type="text/javascript" src="help/help.js"></script>
+		<!--script type="text/javascript" src="help/main.js"></script-->
 		<?php echo $scripsjs; ?>
 		<?php //scripts ?>
 	</body>
