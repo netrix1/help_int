@@ -6,7 +6,7 @@
 
 
 						<li class="nav-item nav-toggle">
-							<a class="nav-link wave" href="javascript:void(0);"><span class="mdi mdi-toolbox-outline"></span>Links e ferramentas</a>
+							<a class="nav-link wave" href="javascript:void(0);"><span class="gg-icon mdi material-icons mdi-toolbox-outline"></span>Links e ferramentas</a>
 							<ul class="nav-dropdown">
 								<li class="nav-item">
 									<a class="nav-link wave" href="#"><span class="gg-icon material-icons font-18 ml-1">adjust</span>Layout-1</a>
@@ -24,11 +24,11 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link wave" href="helper-classes.html"><span class="mdi mdi-clipboard-check-outline"></span>Banco de informações</a>
+							<a class="nav-link wave" href="helper-classes.html"><span class="form-icon material-icons mdi mdi-clipboard-check-outline"></span>Banco de informações</a>
 						</li>
 
 						<li class="nav-item nav-toggle">
-							<a class="nav-link wave" href="javascript:void(0);"><span class="mdi mdi-account-card-details"></span>Area do RH</a>
+							<a class="nav-link wave" href="javascript:void(0);"><span class="form-icon material-icons mdi mdi-account-card-details"></span>Area do RH</a>
 							<ul class="nav-dropdown">
 								<li class="nav-item">
 									<a class="nav-link wave" href="#"><span class="gg-icon material-icons font-18 ml-1">adjust</span>Layout-1</a>
@@ -46,12 +46,12 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link wave" href="helper-classes.html"><span class="mdi mdi-help-circle-outline"></span>FAQ</a>
+							<a class="nav-link wave" href="helper-classes.html"><span class="form-icon material-icons mdi mdi-help-circle-outline"></span>FAQ</a>
 						</li>
 
 
 						<li class="nav-item nav-toggle">
-							<a class="nav-link wave" href="javascript:void(0);"><span class="mdi mdi-ticket-confirmation"></span>Chamados</a>
+							<a class="nav-link wave" href="javascript:void(0);"><span class="form-icon material-icons mdi mdi-ticket-confirmation"></span>Chamados</a>
 							<ul class="nav-dropdown">
 								<li class="nav-item">
 									<a class="nav-link wave" href="#"><span class="gg-icon material-icons font-18 ml-1">adjust</span>Operacional</a>
@@ -66,7 +66,10 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link wave" href="#"><span class="mdi mdi-newspaper"></span>Notícias</a>
+							<a class="nav-link wave" href="#"><span class="form-icon material-icons mdi mdi-newspaper"></span>Notícias</a>
+						</li>
+						<li>
+							<?php echo "<pre>";var_dump($_SESSION);echo "</pre>"; ?>
 						</li>
 
 					</ul>
