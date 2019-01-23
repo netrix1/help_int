@@ -6,7 +6,7 @@
 							<!-- <a class="nav-link dropdown-toggle text-wrap" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
 							<a class="nav-link text-wrap" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<img src="images/male-11.jpg" class="rounded-circle img-avatar-header" style="height: 30px; width: 30px;">
-								Everson Luiz
+								<?php echo $_SESSION['nome']; ?> <span class="mdi mdi-chevron-down"></span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
 								<a class="dropdown-item wave" href="#">
@@ -14,8 +14,8 @@
 										<img src="images/male-11.jpg" class="rounded-circle" style="height: 40px; width: 40px;">
 									</div>
 									<div class="dd-content">
-										<div class="font-16"><b>Everson Luiz</b></div>
-										<div class="font-13 text-muted">TI / Administrador</div>
+										<div class="font-16"><b><?php echo $_SESSION['nome']; ?></b></div>
+										<div class="font-13 text-muted"><?php tipoNivel($_SESSION['nivel']); ?></div>
 									</div>
 								</a>
 								<div class="dropdown-divider"></div>
@@ -23,7 +23,7 @@
 								<a class="dropdown-item wave" href="#"><span class="gg-icon material-icons">assignment</span>Meu Perfil</a>
 								<a class="dropdown-item wave" href="#"><span class="gg-icon material-icons">settings</span>Configuração</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item wave" href="#"> <span class="gg-icon material-icons">power_settings_new</span>Deslogar</a>
+								<a class="dropdown-item wave" href="logout.php"> <span class="gg-icon material-icons">power_settings_new</span>Deslogar</a>
 							</div>
 						</li>
 
