@@ -28,17 +28,17 @@ $senha = (isset($_POST['pass'])) ? $_POST['pass'] : '' ;
 
 
 // Dica 2 - Validações de preenchimento e-mail e senha se foi preenchido o e-mail
-if (empty($login)){
-  //$retorno = array('codigo' => "0", 'mensagem' => 'Preencha seu e-mail!');
-  //echo json_encode($retorno);
+if (empty($login) and empty($senha)){
+  echo "0.5";
+  exit();
+};
 
+if (empty($login)){
   echo "1";
   exit();
 };
 
 if (empty($senha)){
-  //$retorno = array('codigo' => "0", 'mensagem' => 'Preencha sua senha!');
-  //echo json_encode($retorno);
   echo "2";
   exit();
 };
@@ -66,7 +66,7 @@ if (!empty($retorno->tentativas) && intval($retorno->minutos) <= MINUTOS_BLOQUEI
 
 
 // Dica 4 - Válida os dados do usuário com o banco de dados
-$sql = 'SELECT id, user, nome, senha, email, userLvl, foto, postagem FROM tab_usuario WHERE user = ? AND status = ? LIMIT 1';
+$sql = 'SELECT id, user, nome, senha, email,sexo, userLvl, foto, postagem, pai FROM tab_usuario WHERE user = ? AND status = ? LIMIT 1';
 $stm = $conexao->prepare($sql);
 $stm->bindValue(1, $login);
 $stm->bindValue(2, 'A');
@@ -76,12 +76,30 @@ $retorno = $stm->fetch(PDO::FETCH_OBJ);
 
 // Dica 5 - Válida a senha utlizando a API Password Hash
 if(!empty($retorno) && password_verify($senha, $retorno->senha)){
+
+  $sql2="SELECT * FROM `tab_usernivel` WHERE `nivel` LIKE '".$retorno->userLvl."'";
+  $stm2 = $conexao->prepare($sql2);
+  $stm2->execute();
+  $retorno2 = $stm2->fetch(PDO::FETCH_OBJ);
+
+  $_SESSION['nivel'] = $retorno2->nome;
+  $_SESSION['niveldesc'] = $retorno2->descricao;
+
+  $sql3="SELECT nome FROM `tab_usuario` WHERE `id` LIKE '".$retorno->pai."'";
+  $stm3 = $conexao->prepare($sql3);
+  $stm3->execute();
+  $retorno2 = $stm3->fetch(PDO::FETCH_OBJ);
+  $Nivelnome = $retorno3->nome;
+
+  $_SESSION['paiNome'] = $retorno2->nome;
+  $_SESSION['pai_id'] = $retorno->pai;
+
   $_SESSION['id'] = $retorno->id;
   $_SESSION['user'] = $retorno->user;
   $_SESSION['nome'] = $retorno->nome;
+  $_SESSION['sexo'] = $retorno->sexo;
   $_SESSION['email'] = $retorno->email;
   $_SESSION['tentativas'] = 0;
-  $_SESSION['nivel'] = $retorno->userLvl;
   $_SESSION['foto'] = $retorno->foto;
   $_SESSION['postagem'] = $retorno->postagem;
   $_SESSION['logado'] = 'SIM';
@@ -104,8 +122,7 @@ if(!empty($retorno) && password_verify($senha, $retorno->senha)){
 
 // Se logado envia código 1, senão retorna mensagem de erro para o login
 if ($_SESSION['logado'] == 'SIM'){
-  //$retorno = array('codigo' => "1", 'mensagem' => 'Logado com sucesso!');
-  //echo json_encode($retorno);
+
   $sql = 'INSERT INTO `tab_userlogin_sucess` (`ip`, `login`, `origem`) VALUES (?, ?, ?)';
 
   $stm = $conexao->prepare($sql);
@@ -114,23 +131,18 @@ if ($_SESSION['logado'] == 'SIM'){
   $stm->bindValue(3, $_SERVER['HTTP_REFERER']);
   $stm->execute();
   header('Location: index.php');
-  /*
-  echo "<pre>";
-  var_dump($_SESSION);
-  echo "</pre>";
-  echo "Consegiu Logar!!!";*/
-  //exit();
+  exit();
+
 }else{
   if ($_SESSION['tentativas'] == TENTATIVAS_ACEITAS){
-    //$retorno = array('codigo' => "0", 'mensagem' => 'Você excedeu o limite de '.TENTATIVAS_ACEITAS.' tentativas, login bloqueado por '.MINUTOS_BLOQUEIO.' minutos!');
-    //echo json_encode($retorno);
+    
     $error='Você excedeu o limite de '.TENTATIVAS_ACEITAS.' tentativas, login bloqueado por '.MINUTOS_BLOQUEIO.' minutos!';
     setcookie("msgerro", $error, time()+3600);
     header('Location: logar.php');
     exit();
+
   }else{
-    //$retorno = array('codigo' => "0", 'mensagem' => 'Usuário não autorizado, você tem mais '. (TENTATIVAS_ACEITAS - $_SESSION['tentativas']) .' tentativa(s) antes do bloqueio!');
-    //echo json_encode($retorno);
+
     $error='Usuário não autorizado, você tem mais '. (TENTATIVAS_ACEITAS - $_SESSION['tentativas']) .' tentativa(s) antes do bloqueio!';
     setcookie("msgerro", $error, time()+3600);
     header('Location: logar.php');
