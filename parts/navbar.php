@@ -1,4 +1,5 @@
 				<div class="navbar-head d-md-block ml-auto">
+					
 					<ul class="navbar-nav">
 						
 						<!-- dropdown avatar -->
@@ -15,7 +16,7 @@
 									</div>
 									<div class="dd-content">
 										<div class="font-16"><b><?php echo $_SESSION['nome']; ?></b></div>
-										<div class="font-13 text-muted"><?php tipoNivel($_SESSION['nivel']); ?></div>
+										<div class="font-13 text-muted"><?php /*tipoNivel($_SESSION['nivel']);*/ tpNivel($_SESSION['nivelid']); ?></div>
 									</div>
 								</a>
 								<div class="dropdown-divider"></div>
@@ -24,8 +25,9 @@
 								<a class="dropdown-item wave" href="#"><span class="gg-icon material-icons">settings</span>Configuração</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item wave" href="logout.php"> <span class="gg-icon material-icons">power_settings_new</span>Deslogar</a>
-							</div>
+							</div> 
 						</li>
 
 					</ul>
+
 				</div>
