@@ -46,3 +46,13 @@ function selectPai($nomeID){ //retorn um select com todos os Niveis de usuarios 
   unset($stm);
   return $html;
 }
+
+function criaNome(){ // cria nome aleatórios para a utilização nas fotos de usuarios
+    $tamanho = mt_rand(11,13);
+    $all_str = "abcdefghijlkmnopqrstuvxyzwABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    $nome = "";
+    for ($i = 0;$i <= $tamanho;$i++){
+      $nome .= $all_str[mt_rand(0,61)];
+    }
+    return $nome;
+}
