@@ -84,6 +84,7 @@ if(!empty($retorno) && password_verify($senha, $retorno->senha)){
 
   $_SESSION['nivel'] = $retorno2->nome;
   $_SESSION['niveldesc'] = $retorno2->descricao;
+  $_SESSION['nivelid'] = $retorno->userLvl;
 
   $sql3="SELECT nome FROM `tab_usuario` WHERE `id` LIKE '".$retorno->pai."'";
   $stm3 = $conexao->prepare($sql3);
