@@ -6,13 +6,13 @@
 						<li class="nav-item dropdown">
 							<!-- <a class="nav-link dropdown-toggle text-wrap" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
 							<a class="nav-link text-wrap" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img src="images/male-11.jpg" class="rounded-circle img-avatar-header" style="height: 30px; width: 30px;">
+								<img src="user_img/thumb-<?php echo $_SESSION['foto']; ?>" class="rounded-circle img-avatar-header" style="height: 30px; width: 30px;">
 								<?php echo $_SESSION['nome']; ?> <span class="mdi mdi-chevron-down"></span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
 								<a class="dropdown-item wave" href="#">
 									<div class="avatar-img mr-2">
-										<img src="images/male-11.jpg" class="rounded-circle" style="height: 40px; width: 40px;">
+										<img src="user_img/thumb-<?php echo $_SESSION['foto']; ?>" class="rounded-circle" style="height: 40px; width: 40px;">
 									</div>
 									<div class="dd-content">
 										<div class="font-16"><b><?php echo $_SESSION['nome']; ?></b></div>
