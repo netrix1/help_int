@@ -29,10 +29,14 @@ if (!isset($_POST['user'])) {
 
 	$sql2 = "INSERT INTO `tab_usuario` (`id`, `user`, `senha`, `nome`, `sexo`, `email`, `userLvl`, `status`, `pai`, `foto`, `postagem`, `data_criacao`, `user_criacao`)";
 	
-	$sql2.= "VALUES (NULL, \"".$_POST['user']."\", \"".$senha."\", \"".$_POST['nome']."\", \"".$_POST['sexo']."\", \"".$_POST['email']."\", \"".$_POST['userLvl']."\", 'A', \"".$_POST['pai']."\", '', '', NOW(), \"".$_SESSION['id']."\")";
+	$sql2.= "VALUES (NULL, \"".$_POST['user']."\", \"".$senha."\", \"".$_POST['nome']."\", \"".$_POST['sexo']."\", \"".$_POST['email']."\", \"".$_POST['userLvl']."\", 'A', \"".$_POST['pai']."\", \"".$_POST['foto']."\", '', NOW(), \"".$_SESSION['id']."\")";
 
 }
 echo $sql2;
+
+echo "<pre>";
+var_dump($_POST);
+echo "</pre>";
 
 
 $stm = $conexao->prepare($sql2);
