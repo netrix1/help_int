@@ -120,7 +120,18 @@ require_once 'config.php';
 					<?php include PASTA_PARTS.'/breadcrumb.php'; ?>
 					<?php // Content.php ?>
 					<?php //include PASTA_PARTS.'/content.php'; ?>
-					<?php include PASTA_PARTS.'/makeuser.php'; ?>
+					<?php //include PASTA_PARTS.'/makeuser.php'; ?>
+					<?
+					//include 'ir.php';
+					$Conteudo = $_REQUEST['go'];
+					if($Conteudo == '')	{	$Conteudo = 'home';	}
+
+					if(file_exists('parts/' . $Conteudo . '.php')){
+						require('parts/' . $Conteudo . '.php');
+					}else{
+						require('ir.php');
+					}
+					?>
 				</section>
 			</div>
 		</div>
