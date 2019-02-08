@@ -11,9 +11,13 @@ switch(@$_REQUEST['go'])
 	case 'IncluirPostagem':		include 'admin/incluirPost.php'; 		break;
 	case 'versessaousuario':	include 'admin/sessionvw.php';			break;
 
-	case 'testchat':	include '../c3/teste.php';			break;
+	case 'testchat':			include '../c3/teste.php';			break;
 
-	default: 				include 'pages/404.php';				break;
+	default: 					include 'pages/404.php';				break;
+
+//--------------------------------Paginas do Site----------------------------------------------
+//---------------------------------------------------------------------------------------------
+
 }
 
 ?>

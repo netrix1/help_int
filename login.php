@@ -114,12 +114,7 @@ if(!empty($retorno) && password_verify($senha, $retorno->senha)){
 	$_SESSION['sexo'] = $retorno->sexo;
 	$_SESSION['email'] = $retorno->email;
 	$_SESSION['tentativas'] = 0;
-
-	if ($retorno->foto == "") {
-		$_SESSION['foto'] = "defaut.png";
-	}else{
-		$_SESSION['foto'] = $retorno->foto;
-	}
+	$_SESSION['foto'] = $retorno->foto;
 	$_SESSION['postagem'] = $retorno->postagem;
 	$_SESSION['logado'] = 'SIM';
 }else{
@@ -142,24 +137,13 @@ if(!empty($retorno) && password_verify($senha, $retorno->senha)){
 // Se logado envia código 1, senão retorna mensagem de erro para o login
 if ($_SESSION['logado'] == 'SIM'){
 
-	$sql = 'INSERT INTO `tab_userlogin_sucess` (`ip`, `login`, `o-rigem`) VALUES (?, ?, ?)';
+	$sql = 'INSERT INTO `tab_userlogin_sucess` (`ip`, `login`, `origem`) VALUES (?, ?, ?)';
 
 	$stm = $conexao->prepare($sql);
 	$stm->bindValue(1, $_SERVER['REMOTE_ADDR']);
 	$stm->bindValue(2, $login);
 	$stm->bindValue(3, $_SERVER['HTTP_REFERER']);
 	$stm->execute();
-
-	//$sql2 = 'INSERT INTO login_details (user_id, last_activity) VALUES (?, ?)';
-	$sql2 = "INSERT INTO `login_details`(`user_id`, `last_activity` ) VALUES (?, '0000-00-00 00:00:00')";
-
-	$stm2 = $conexao->prepare($sql2);
-	$stm2->bindValue(1, $_SESSION['id']);
-
-	$retorno = $stm2;
-	$stm2->execute();
-
-	$_SESSION['login_details_id'] = $conexao->lastInsertId();
 	
   $retorno = array('codigo' => 1, 'mensagem' => 'Logado com sucesso!');
   echo json_encode($retorno);

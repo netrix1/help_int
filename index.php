@@ -122,13 +122,14 @@ require_once 'config.php';
 					<?php //include PASTA_PARTS.'/content.php'; ?>
 					<?php //include PASTA_PARTS.'/makeuser.php'; ?>
 					<?
+
 					
 					$Conteudo = $_REQUEST['go'];
 					if($Conteudo == '')	{	$Conteudo = 'home';	}
 
 					if(file_exists('pages/' . $Conteudo . '.php')){
 						require('pages/' . $Conteudo . '.php');
-					}else{
+					}else{//include 'ir.php';
 						require('ir.php');
 					}
 					?>
