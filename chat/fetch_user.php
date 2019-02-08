@@ -2,8 +2,8 @@
 
 //fetch_user.php
 
-include('../c3/database_connection.php');
-include('../help_int/functions.php');
+include('../chat/database_connection.php');
+include('../functions.php');
 
 session_start();
 

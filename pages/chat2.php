@@ -49,16 +49,8 @@
 <div class="row no-gutters"> <!-- row -->
 	<div class="col-sm-12 col-md-6 col-lg-4 bg-white border-right" style="min-height: calc(100vh - 94px);"> <!-- col -->
 		<div class="card flat">
-			<?php /*
-			<div class="card-header h-60px">
-				<div class="form-group form-group-icon m-0">
-					<input type="text" id-search="input-search-list" data-search="list-group-search" class="form-control form-control-sm cs-form rounded" placeholder="Search...">
-					<span class="material-icons form-icon">search</span>
-				</div>
-			</div>
 
-				<div class="list-search-not-found p-3">    min-height: 87.8vh;</div>*/ ?>
-				<div id="user_details"></div>
+			<div id="user_details"></div>
 				
 		</div>
 	</div> <!-- end col -->
@@ -76,9 +68,9 @@
 		setInterval(function(){
 			update_last_activity();
 			fetch_user();
-			update_chat_history_data();
+			/*update_chat_history_data();*/
 			fetch_group_chat_history();
-		}, 3000000);
+		}, 3000);
 
 		function fetch_user()
 		{
