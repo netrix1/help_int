@@ -3,8 +3,9 @@ require_once 'verifica_sessao.php';
 require_once 'config.php';
 ?><!DOCTYPE html>
 <html lang="en">
+
 	<head>
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
@@ -19,6 +20,8 @@ require_once 'config.php';
 		<!-- Style Personalizados -->
 		<link rel="stylesheet" href="help/help.css">
 		<link rel="stylesheet" href="help/main.css">
+		<!-- Jquerry -->
+		<script type="text/javascript" src="help/jquery.min.js"></script>
 		<style type="text/css">
 			.logoHelp {
 				height: 50px;
@@ -117,19 +120,32 @@ require_once 'config.php';
 					<?php include PASTA_PARTS.'/breadcrumb.php'; ?>
 					<?php // Content.php ?>
 					<?php //include PASTA_PARTS.'/content.php'; ?>
-					<?php include PASTA_PARTS.'/makeuser.php'; ?>
+					<?php //include PASTA_PARTS.'/makeuser.php'; ?>
+					<?
+					
+					$Conteudo = $_REQUEST['go'];
+					if($Conteudo == '')	{	$Conteudo = 'home';	}
+
+					if(file_exists('pages/' . $Conteudo . '.php')){
+						require('pages/' . $Conteudo . '.php');
+					}else{
+						require('ir.php');
+					}
+					?>
 				</section>
 			</div>
 		</div>
 		<?php //include PASTA_PARTS.'/chat.php';?>
 		<?php //include PASTA_PARTS.'/right_float.php';?>
 		</div>
-		<script type="text/javascript" src="plugins/jquery-3.2.1.min.js"></script>
+		<!--script type="text/javascript" src="plugins/jquery-3.2.1.min.js"></script-->
+
 		<script type="text/javascript" src="plugins/popper.min.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="plugins/chartjs/dist/Chart.min.js"></script>
 		<script type="text/javascript" src="pages/charts/utils.js"></script>
 		<script type="text/javascript" src="help/help.js"></script>
+
 		<!--script type="text/javascript" src="help/main.js"></script-->
 		<?php echo $scripsjs; ?>
 		<?php //scripts ?>
