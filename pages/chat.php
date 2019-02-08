@@ -1,41 +1,16 @@
 <style type="text/css">
 .mb-4, .my-4 {
-	margin-bottom: 0rem!important;
+    margin-bottom: 0rem!important;
 }
 
 .border-bottom {
-	border-bottom: 1px solid #dee2e6!important;
+    border-bottom: 1px solid #dee2e6!important;
 }
 .breadcrumb{
 	margin-bottom: 0rem !important;
 }
 .card-footer {
-	padding: .75rem 1.25rem .75rem 0rem;
-}
-.status-user-notification {
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	border-radius: 50%;
-	-moz-background-clip: padding-box;
-	-webkit-background-clip: padding-box;
-	background-clip: padding-box;
-	border: 2px solid #fff;
-	color: #fefefe;
-	font: normal 0.85em 'Lato';
-	height: 15px;
-	line-height: 1.75em;
-	position: relative;
-	right: 25px;
-	text-align: center;
-	top: 22px;
-	width: 15px;
-	content: "";
-}
-.status-user-offline{
-	background: #db3434;
-}
-.status-user-online{
-	background: #24c13f;
+    padding: .75rem 1.25rem .75rem 0rem;
 }
 </style>
 <div class="row no-gutters"> <!-- row -->
@@ -54,7 +29,6 @@
 					<a href="#" class="list-group-item list-group-item-action">
 						<div class="media">
 							<img class="mr-3 img-fluid h-35px rounded-circle" src="images/avatar/image-6.png" alt="Generic placeholder image">
-							<div class="status-user-notification status-user-offline"></div>
 							<div class="media-body d-flex justify-content-between align-items-center align-self-center">
 								<div class="mt-0">John Doe</div>
 								<div><small>2 min ago</small></div>
@@ -64,7 +38,6 @@
 					<a href="#" class="list-group-item list-group-item-action">
 						<div class="media">
 							<img class="mr-3 img-fluid h-35px rounded-circle" src="images/avatar/image-7.png" alt="Generic placeholder image">
-							<div class="status-user-notification status-user-online"></div>
 							<div class="media-body d-flex justify-content-between align-items-center align-self-center">
 								<div class="mt-0">Ivan Petrov</div>
 								<div><small>12:02</small></div>
@@ -74,7 +47,6 @@
 					<a href="#" class="list-group-item list-group-item-action">
 						<div class="media">
 							<img class="mr-3 img-fluid h-35px rounded-circle" src="images/avatar/image-9.png" alt="Generic placeholder image">
-							<div class="status-user-notification status-user-online"></div>
 							<div class="media-body d-flex justify-content-between align-items-center align-self-center">
 								<div class="mt-0">Ambo Mina</div>
 								<div class="d-flex flex-column"><small>09:22</small><span class="badge badge-pill badge-primary ml-2">2</span></div>
@@ -84,7 +56,6 @@
 					<a href="#" class="list-group-item list-group-item-action">
 						<div class="media">
 							<img class="mr-3 img-fluid h-35px rounded-circle" src="images/avatar/image-2.png" alt="Generic placeholder image">
-							<div class="status-user-notification status-user-offline"></div>
 							<div class="media-body d-flex justify-content-between align-items-center align-self-center">
 								<div class="mt-0">Jenna Smith</div>
 								<div><small>2 hours ago</small></div>

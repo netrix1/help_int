@@ -50,8 +50,19 @@
 	<div class="col-sm-12 col-md-6 col-lg-4 bg-white border-right" style="min-height: calc(100vh - 94px);"> <!-- col -->
 		<div class="card flat">
 
+	<script language="JavaScript">
+	<!--
+	var parar = false;
+	function rolar() {
+		if (!parar) {
+			window.scrollTo(0,100000);
+			setTimeout("rolar()", 250);
+		}
+	}
+	//-->
+	</script>
 			<div id="user_details"></div>
-				
+				<script type="text/javascript">var parar = true;</script>
 		</div>
 	</div> <!-- end col -->
 	<div class="col-sm-12 col-md-6 col-lg-8 bg-white"> <!-- col -->
@@ -94,21 +105,27 @@
 			})
 		}
 
+		function rolar() { 
+			if(document.getElementById("rolagem").value == 1){
+				fler.scrollBy(0,70);
+				setTimeout("rolar()",0); 
+			}
+		}
+
 		function make_chat_dialog_box(to_user_id, to_user_name){
 			var
-			modal_content = '<div class="card-header h-60px p-1 mb-2">';
+			modal_content = '<div class="card-header h-60px p-1 mb-2" onLoad="rolar()">';
 			modal_content+= '	<div class="pt-1 pl-3 d-flex justify-content-between">';
 			modal_content+= '	<img class="mr-1 img-fluid h-35px rounded-circle d-flex align-self-center" src="images/avatar/image-1.png" alt="Generic placeholder image">';
 			modal_content+= '	<div class="w-100">'+to_user_name+'<small class="d-block font-13">Online</small></div>';
 			modal_content+= '	</div>';
 			modal_content+= '</div>';
 
-			modal_content+= '<div class="card-body scroll font-14" style="height: calc(100vh - 226px);">';
+			modal_content+= '<div class="card-body scroll font-14" style="height: calc(100vh - 226px);" id="answer">';
 
 			modal_content += '<div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
 			modal_content += fetch_user_chat_history(to_user_id);
 			modal_content += '</div>';
-
 			modal_content+= '</div>';
 
 			modal_content+= '<div class="card-footer">';
@@ -123,6 +140,7 @@
 			modal_content+= '</div>';
 
 			$('#user_model_details').html(modal_content);
+
 		}
 
 		$(document).on('click', '.start_chat', function(){
@@ -214,10 +232,10 @@
 			})
 		});
 
-		$('#group_chat_dialog').dialog({
+		/*$('#group_chat_dialog').dialog({
 			autoOpen:false,
 			width:400
-		});
+		});*/
 
 		$('#group_chat').click(function(){
 			$('#group_chat_dialog').dialog('open');
@@ -269,4 +287,11 @@
 		
 	});  
 	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		  $('#answer').attr({scrollTop: $('#answer').attr('scrollHeight')});
+		});
+	</script>
+
+
 </div> <!-- end row -->

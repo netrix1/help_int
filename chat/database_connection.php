@@ -6,6 +6,27 @@ $connect = new PDO("mysql:host=localhost;dbname=netrix;charset=utf8mb4", "root",
 
 date_default_timezone_set('America/Sao_Paulo');
 
+function tempoExibe($time) { // mostra tempo da postagem de forma amigável
+date_default_timezone_set('America/Sao_Paulo');
+$now = strtotime(date('m/d/Y H:i:s'));
+	$time = strtotime($time);
+	$diff = $now - $time;
+	$seconds = $diff;
+	$minutes = round($diff / 60);
+	$hours = round($diff / 3600);
+	$days = round($diff / 86400);
+	$weeks = round($diff / 604800);
+	$months = round($diff / 2419200);
+	$years = round($diff / 29030400);
+	if ($seconds <= 60) return "Agora pouco";
+	else if ($minutes <= 60) return $minutes==1 ?'1 minuto atrás':$minutes.' minutos atrás';
+	else if ($hours <= 24) return $hours==1 ?'1 hora atrás':$hours.' horas atrás';
+	else if ($days <= 7) return $days==1 ?'1 dia atras':$days.' dias atrás';
+	else if ($weeks <= 4) return $weeks==1 ?'1 semana atrás':$weeks.' semanas atrás';
+	else if ($months <= 12) return $months == 1 ?'1 mês atrás':$months.' meses atrás';
+	else return $years == 1 ? 'um ano atrás':$years.' anos atrás';
+}
+
 function fetch_user_last_activity($user_id, $connect){
 	$query = "
 	SELECT * FROM login_details 
@@ -28,24 +49,38 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $connect){
 	AND to_user_id = '".$to_user_id."') 
 	OR (from_user_id = '".$to_user_id."' 
 	AND to_user_id = '".$from_user_id."') 
-	ORDER BY timestamp DESC
+	ORDER BY timestamp ASC
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
-	$result = $statement->fetchAll();
-	$output = '<ul class="list-unstyled">';
+	$result = $statement->fetchAll();/*
+	$output = '<ul class="list-unstyled">';*/
+	$output = '';
 	foreach($result as $row)
 	{
 		$user_name = '';
 		if($row["from_user_id"] == $from_user_id)
 		{
-			$user_name = '<b class="text-success">You</b>';
+			$output.= '	<div class="media mb-2">
+							<div class="media-body ml-50px">
+								<div class="bg-primary text-white p-1 rounded d-inline-block float-right">'.$row["chat_message"].'
+									<small class="d-block text-right text-opc_5">'.tempoExibe($row['timestamp']).'</small>
+								</div>
+							</div>
+						</div>';
 		}
 		else
 		{
-			$user_name = '<b class="text-danger">'.get_user_name($row['from_user_id'], $connect).'</b>';
+			//$user_name = '<b class="text-danger">'.get_user_name($row['from_user_id'], $connect).'</b>';
+			$output.= '	<div class="media mb-2"> <!-- right -->
+							<div class="media-body mr-50px">
+								<div class="bg-opc p-1 rounded d-inline-block">'.$row["chat_message"].'
+									<small class="d-block text-right text-muted">'.tempoExibe($row['timestamp']).'</small>
+								</div>
+							</div>
+						</div>';
 		}
-		$output .= '
+		/* $output .= '
 		<li style="border-bottom:1px dotted #ccc">
 			<p>'.$user_name.' - '.$row["chat_message"].'
 				<div align="right">
@@ -53,9 +88,11 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $connect){
 				</div>
 			</p>
 		</li>
-		';
+		'; */
+
+		
 	}
-	$output .= '</ul>';
+	//$output .= '</ul>';
 
 	$query = "
 	UPDATE chat_message 
