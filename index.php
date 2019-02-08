@@ -144,7 +144,7 @@ require_once 'config.php';
 		<script type="text/javascript" src="plugins/popper.min.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="plugins/chartjs/dist/Chart.min.js"></script>
-		<script type="text/javascript" src="pages/charts/utils.js"></script>
+		<!--script type="text/javascript" src="pages/charts/utils.js"></script-->
 		<script type="text/javascript" src="help/help.js"></script>
 
 		<!--script type="text/javascript" src="help/main.js"></script-->
