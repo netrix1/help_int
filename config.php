@@ -13,10 +13,10 @@ define('SITE_DESC', "descrição site");
 define('SITE_AUTHOR', "autor site"); 
 
 // descrição com o nome do site
-define('SITE_NAME', "nome do site");
+define('SITE_NAME', "Intranet Help");
 
 // descrição com o titulo do site 
-define('SITE_TITLE', "titulo do site");
+define('SITE_TITLE', "Intranet Help");
 
 // Mais descrição do site
 define('SITE_DESC', "descrição site"); 
@@ -35,6 +35,12 @@ define('PAGINA', 'http://localhost:8090/login/index.php');
 
 // Constante contendo pagina que pode receber o formulário de login
 define('PAGINA2', 'http://localhost:8090/login/');
+
+// pasta upload foto usuario Original
+define('PASTA_UP_FOTO', 'user_img/original'); 
+
+// pasta upload foto usuario Recortada
+define('PASTA_UP_FOTO_REC', 'user_img'); 
 
 include_once 'functions.php';
 ?>
