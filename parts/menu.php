@@ -1,7 +1,7 @@
 					<ul class="nav flex-column sidebar-nav">
 
 						<li class="nav-item">
-							<a class="nav-link wave active" href="#"><span class="gg-icon material-icons">home</span>Home</a>
+							<a class="nav-link wave active" href="index.php?go=home"><span class="gg-icon material-icons">home</span>Home</a>
 						</li>
 
 
@@ -9,7 +9,7 @@
 							<a class="nav-link wave" href="javascript:void(0);"><span class="gg-icon mdi material-icons mdi-toolbox-outline"></span>Links e ferramentas</a>
 							<ul class="nav-dropdown">
 								<li class="nav-item">
-									<a class="nav-link wave" href="#"><span class="gg-icon material-icons font-18 ml-1">adjust</span>Layout-1</a>
+									<a class="nav-link wave" href="index.php?go=makeuser"><span class="gg-icon material-icons font-18 ml-1">adjust</span>Layout-1</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link wave d-flex" href="#">
@@ -68,8 +68,6 @@
 						<li class="nav-item">
 							<a class="nav-link wave" href="#"><span class="form-icon material-icons mdi mdi-newspaper"></span>Notícias</a>
 						</li>
-						<li>
-							<?php echo "<pre>";var_dump($_SESSION);echo "</pre>"; ?>
-						</li>
+
 
 					</ul>
