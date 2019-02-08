@@ -41,7 +41,7 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.1/emojionearea.min.css" />
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!--script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.1/emojionearea.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
 
@@ -78,12 +78,12 @@
 			fetch_user();
 			update_chat_history_data();
 			fetch_group_chat_history();
-		}, 3000);
+		}, 3000000);
 
 		function fetch_user()
 		{
 			$.ajax({
-				url:"../c3/fetch_user.php",
+				url:"chat/fetch_user.php",
 				method:"POST",
 				success:function(data){
 					$('#user_details').html(data);
@@ -94,7 +94,7 @@
 		function update_last_activity()
 		{
 			$.ajax({
-				url:"../c3/update_last_activity.php",
+				url:"chat/update_last_activity.php",
 				success:function()
 				{
 
@@ -102,17 +102,34 @@
 			})
 		}
 
-		function make_chat_dialog_box(to_user_id, to_user_name)
-		{
+		function make_chat_dialog_box(to_user_id, to_user_name){
 			var
-			modal_content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
-			modal_content += '<div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
+			modal_content = '<div class="card-header h-60px p-1 mb-2">';
+			modal_content+= '	<div class="pt-1 pl-3 d-flex justify-content-between">';
+			modal_content+= '	<img class="mr-1 img-fluid h-35px rounded-circle d-flex align-self-center" src="images/avatar/image-1.png" alt="Generic placeholder image">';
+			modal_content+= '	<div class="w-100">'+to_user_name+'<small class="d-block font-13">Online</small></div>';
+			modal_content+= '	</div>';
+			modal_content+= '</div>';
+
+			modal_content+= '<div class="card-body scroll font-14" style="height: calc(100vh - 226px);">';
+
+			modal_content += '<div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
 			modal_content += fetch_user_chat_history(to_user_id);
 			modal_content += '</div>';
-			modal_content += '<div class="form-group">';
-			modal_content += '<input name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control chat_message"/>';
-			modal_content += '</div><div class="form-group" align="right">';
-			modal_content+= '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div></div>';
+
+			modal_content+= '</div>';
+
+			modal_content+= '<div class="card-footer">';
+			modal_content+= '	<div class="d-flex justify-content-between">'
+			modal_content+= '		<button class="btn flat bg-transparent hover-1"><span class="gg-icon material-icons font-25">image</span></button>';
+			modal_content+= '		<button class="btn flat bg-transparent hover-1"><span class="gg-icon material-icons font-25">attach_file</span></button>';
+			modal_content+= '		<input class="form-control chat_message cs-form write-message flat border-bottom" name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" rows="1" placeholder="Mensagem"></input>';
+			modal_content+= '		<button class="btn bg-transparent flat hover-1 send_chat" type="button" name="send_chat" id="'+to_user_id+'">';
+			modal_content+= '			<span class="gg-icon material-icons font-25">send</span>';
+			modal_content+= '		</button>';
+			modal_content+= '	</div>';
+			modal_content+= '</div>';
+
 			$('#user_model_details').html(modal_content);
 		}
 
@@ -140,7 +157,7 @@
 			var to_user_id = $(this).attr('id');
 			var chat_message = $('#chat_message_'+to_user_id).val();
 			$.ajax({
-				url:"../c3/insert_chat.php",
+				url:"chat/insert_chat.php",
 				method:"POST",
 				data:{to_user_id:to_user_id, chat_message:chat_message},
 				success:function(data)
@@ -157,7 +174,7 @@
 		function fetch_user_chat_history(to_user_id)
 		{
 			$.ajax({
-				url:"../c3/fetch_user_chat_history.php",
+				url:"chat/fetch_user_chat_history.php",
 				method:"POST",
 				data:{to_user_id:to_user_id},
 				success:function(data){
@@ -182,7 +199,7 @@
 		$(document).on('focus', '.chat_message', function(){
 			var is_type = 'yes';
 			$.ajax({
-				url:"../c3/update_is_type_status.php",
+				url:"chat/update_is_type_status.php",
 				method:"POST",
 				data:{is_type:is_type},
 				success:function()
@@ -195,7 +212,7 @@
 		$(document).on('blur', '.chat_message', function(){
 			var is_type = 'no';
 			$.ajax({
-				url:"../c3/update_is_type_status.php",
+				url:"chat/update_is_type_status.php",
 				method:"POST",
 				data:{is_type:is_type},
 				success:function()
@@ -222,7 +239,7 @@
 			if(chat_message != '')
 			{
 				$.ajax({
-					url:"../c3/group_chat.php",
+					url:"chat/group_chat.php",
 					method:"POST",
 					data:{chat_message:chat_message, action:action},
 					success:function(data){
@@ -240,7 +257,7 @@
 			if(group_chat_dialog_active == 'yes')
 			{
 				$.ajax({
-					url:"../c3/group_chat.php",
+					url:"chat/group_chat.php",
 					method:"POST",
 					data:{action:action},
 					success:function(data)
