@@ -104,3 +104,29 @@ $now = strtotime(date('m/d/Y H:i:s'));
 	else if ($months <= 12) return $months == 1 ?'1 mês atrás':$months.' meses atrás';
 	else return $years == 1 ? 'um ano atrás':$years.' anos atrás';
 }
+
+
+
+function pegaFoto($id){
+	require_once 'conexao.php';
+	$conexao = conexao::getInstance();
+	$sql = "SELECT foto FROM `tab_usuario` WHERE `id` = ".$id;
+	$stm = $conexao->prepare($sql);
+	$stm->execute();
+	$result = $stm -> fetch();
+	$result = $result[0];
+	if ($result == "") {
+		$result="defaut.png";
+	}
+	return $result;
+}
+function NomeNivelUsuario($tpNivel){
+  require_once 'conexao.php';
+  $conexao = conexao::getInstance();
+  $sql = "SELECT nome FROM `tab_usernivel` WHERE `nivel` = ".$tpNivel;
+  $stm = $conexao->prepare($sql);
+  $stm->execute();
+  $retorno = $stm->fetch(PDO::FETCH_OBJ);
+  echo $retorno->nome;
+  unset($stm);
+}
