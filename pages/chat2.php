@@ -79,9 +79,13 @@
 		setInterval(function(){
 			update_last_activity();
 			fetch_user();
-			/*update_chat_history_data();*/
+			update_chat_history_data();
 			fetch_group_chat_history();
 		}, 3000);
+
+		function scrollBottomJQuery(){
+			$("#container").scrollTop($("#container")[0].scrollHeight);
+		}
 
 		function fetch_user()
 		{

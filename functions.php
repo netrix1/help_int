@@ -121,12 +121,36 @@ function pegaFoto($id){
 	return $result;
 }
 function NomeNivelUsuario($tpNivel){
-  require_once 'conexao.php';
-  $conexao = conexao::getInstance();
-  $sql = "SELECT nome FROM `tab_usernivel` WHERE `nivel` = ".$tpNivel;
-  $stm = $conexao->prepare($sql);
-  $stm->execute();
-  $retorno = $stm->fetch(PDO::FETCH_OBJ);
-  echo $retorno->nome;
-  unset($stm);
+	require_once 'conexao.php';
+	$conexao = conexao::getInstance();
+	$sql = "SELECT nome FROM `tab_usernivel` WHERE `nivel` = ".$tpNivel;
+	$stm = $conexao->prepare($sql);
+	$stm->execute();
+	$retorno = $stm->fetch(PDO::FETCH_OBJ);
+	echo $retorno->nome;
+	unset($stm);
+}
+
+function pegaNoticias(){
+	require_once 'conexao.php';
+	$conexao = conexao::getInstance();
+	$sql = "SELECT * FROM `tab_posts` ORDER BY `tab_posts`.`id` DESC LIMIT 3";
+	$stm = $conexao->prepare($sql);
+	$stm->execute();
+	$retorno = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+	return $retorno;
+	unset($stm);
+}
+
+function pegaNoticia($noticiaId){
+	require_once 'conexao.php';
+	$conexao = conexao::getInstance();
+	$sql = "SELECT * FROM `tab_posts` WHERE `id`=".$noticiaId;
+	$stm = $conexao->prepare($sql);
+	$stm->execute();
+	$retorno = $stm->fetch(PDO::FETCH_ASSOC);
+
+	return $retorno;
+	unset($stm);
 }

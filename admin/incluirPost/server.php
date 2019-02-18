@@ -35,7 +35,7 @@ if (isset($_POST['enviado'])) {
 
 	mysqli_query($db, $sql);
 	//header("location: index.php?go=IncluirPostagem");
-/*
+
 
 	$sucesso= '	<div class="col-12 col-md-10 col-lg-10 offset-md-1 offset-lg-1 p-2">';
 	$sucesso.='		<div class="alert alert-success alert-dismissible fade show" role="alert">';
@@ -45,9 +45,9 @@ if (isset($_POST['enviado'])) {
 	$sucesso.='			</button>';
 	$sucesso.='		</div>';
 	$sucesso.='	</div>';
-*/
 
-	var_dump($sql);
+
+	//var_dump($sql);
 	echo $sucesso;
 }
 ?>

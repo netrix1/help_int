@@ -47,13 +47,13 @@
 			<!-- end card-body -->
 		</div>
 
-		<?php
+		<?php/*
 		$db = mysqli_connect("localhost", "root", "andersom11", "netrix");
 		// retrieve posts from database
 		$result = mysqli_query($db, "SELECT * FROM `tab_posts` ORDER BY `tab_posts`.`id` DESC LIMIT 3");
 		$posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
 		
-		require_once 'functions.php';
+		require_once 'functions.php';*/
 		?>
 
 		<!-- end col -->
@@ -65,14 +65,16 @@
 			<div class="list-group">
 
 			<?php
+			$posts=pegaNoticias();
+			
 			if(isset($posts)){
 				foreach ($posts as $post) {
-					echo '<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">';
+					echo '<a href="?go=noticia&idnoticia='.$post['id'].'" class="list-group-item list-group-item-action flex-column align-items-start">';
 					echo '	<div class="d-flex w-100 justify-content-between">';
 					echo '		<h5 class="mb-1">'.$post['title'].'</h5>';
 					echo '		<small class="text-muted">'.tempo_corrido($post['post_data']).'</small>';
 					echo '	</div>';
-					echo '	<p class="mb-1">'.limita_caracteres(htmlspecialchars_decode($post['body']), "140", FALSE).'</p>';
+					echo '	<p class="mb-1">'.strip_tags(limita_caracteres(htmlspecialchars_decode($post['body']), "140", FALSE)).'</p>';
 					echo '	<small>por '.pegaUsuario($post['post_user']).'</small>';
 					echo '</a>';
 				}
@@ -85,7 +87,7 @@
 			}
 			?>
 
-			</div>	
+			</div>
 		</div>
 
 		<!-- end col -->
